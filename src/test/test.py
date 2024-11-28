@@ -12,14 +12,21 @@ def main():
 	parser.add_argument("--seeds", type=int, default=42)
 	parser.add_argument("--scale", type=float, default=6.0)
 	parser.add_argument("--samples", type=int, default=20)
+	parser.add_argument("--prompt", type=str, default="a photo of <s2*> pine in the desert")
+	parser.add_argument(
+        "--modifier_token",
+        type=str,
+        default="<s1*>+<s2*>+<c1*>+<c2*>+<c3*>+<c4*>",
+        help="A token to use as a modifier for the concept.",
+    )
 
 	args = parser.parse_args()
 	
 	prompts = [
-		"a photo of <s*> pine in the desert"
+		args.prompt
 		]
 
-	model_path = f'model/{args.exp}/'
+	model_path = f'models/{args.exp}/'
 	LOG_DIR=f''
 
 	model_id = f"{model_path+LOG_DIR}"
@@ -35,13 +42,10 @@ def main():
 	if not osExist:
   		os.makedirs(f'{out_path}/{LOG_DIR}')
 	
-	pipe = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", low_cpu_mem_usage=False, torch_dtype=torch.float16).to("cuda")
+	pipe = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", low_cpu_mem_usage=False, torch_dtype=torch.float16, safety_checker=None).to("cuda")
 	pipe.unet.load_attn_procs(f"{model_id}", weight_name="pytorch_custom_diffusion_weights.bin")
-	pipe.load_textual_inversion(f"{model_id}", weight_name="<s*>.bin")
-	pipe.load_textual_inversion(f"{model_id}", weight_name="<c1*>.bin")
-	pipe.load_textual_inversion(f"{model_id}", weight_name="<c2*>.bin")
-	pipe.load_textual_inversion(f"{model_id}", weight_name="<c3*>.bin")
-	pipe.load_textual_inversion(f"{model_id}", weight_name="<c4*>.bin")
+	for modifier_token in args.modifier_token.split("+"):
+		pipe.load_textual_inversion(f"{model_id}", weight_name=f"{modifier_token}.bin")
 
 	for prompt in prompts:
 		n_samples = args.samples
