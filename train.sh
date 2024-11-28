@@ -15,6 +15,6 @@ CUDA_VISIBLE_DEVICES=0,1 CUDA_LAUNCH_BLOCKING=1 python src/train/train_colorpeel
   --cos_weight=0.2 \
   --scale_lr --hflip  \
   --modifier_token $modifier_token \
-  --initializer_token "cat+color+crow+color+bird+color"
+  --initializer_token "cat+white+crow+black+bird+color"
 
 python src/test/test.py --exp exp --prompt "a photo of <c1*> <s3*>" --modifier_token $modifier_token --samples 10
