@@ -1,0 +1,10 @@
+accelerate==0.26
+opencv-python
+diffusers==0.17
+matplotlib
+transformers>=4.25.1
+huggingface_hub==0.24
+# torchvision
+# ftfy
+# tensorboard
+# Jinja2

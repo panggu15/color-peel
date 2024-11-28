@@ -1,0 +1,14 @@
+[
+  {
+    "instance_prompt":     ["a photo of <s1*> in <c1*> color"],
+    "instance_data_dir": "imgs/cat"
+  },
+  {
+    "instance_prompt":     ["a photo of <s2*> in <c2*> color"],
+    "instance_data_dir": "imgs/crow"
+  },
+  {
+    "instance_prompt":     ["a photo of <s3*> in <c3*> color"],
+    "instance_data_dir": "imgs/bird"
+  }
+]
