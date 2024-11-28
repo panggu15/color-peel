@@ -1,7 +1,7 @@
 MODEL_NAME="CompVis/stable-diffusion-v1-4"
 Out_dir="models/exp"
 
-CUDA_VISIBLE_DEVICES=3 CUDA_LAUNCH_BLOCKING=1 python src/train/train_colorpeel.py \
+CUDA_VISIBLE_DEVICES=0 CUDA_LAUNCH_BLOCKING=1 python src/train/train_colorpeel.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --output_dir=$Out_dir \
   --concepts_list=./src/concept_json/instances_3d.json \
