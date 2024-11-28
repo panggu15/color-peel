@@ -14,11 +14,11 @@ def main():
 	parser.add_argument("--samples", type=int, default=20)
 	parser.add_argument("--prompt", type=str, default="a photo of <s2*> pine in the desert")
 	parser.add_argument(
-        "--modifier_token",
-        type=str,
-        default="<s1*>+<s2*>+<c1*>+<c2*>+<c3*>+<c4*>",
-        help="A token to use as a modifier for the concept.",
-    )
+	        "--modifier_token",
+	        type=str,
+	        default="<s1*>+<s2*>+<c1*>+<c2*>+<c3*>+<c4*>",
+	        help="A token to use as a modifier for the concept.",
+	    )
 
 	args = parser.parse_args()
 	
