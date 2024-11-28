@@ -35,7 +35,7 @@ def main():
 	if not osExist:
   		os.makedirs(f'{out_path}/{LOG_DIR}')
 	
-	pipe = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", low_cpu_mem_usage=False, torch_dtype=torch.float16).to("cuda:5")
+	pipe = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", low_cpu_mem_usage=False, torch_dtype=torch.float16).to("cuda")
 	pipe.unet.load_attn_procs(f"{model_id}", weight_name="pytorch_custom_diffusion_weights.bin")
 	pipe.load_textual_inversion(f"{model_id}", weight_name="<s*>.bin")
 	pipe.load_textual_inversion(f"{model_id}", weight_name="<c1*>.bin")
