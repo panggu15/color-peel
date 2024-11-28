@@ -15,4 +15,4 @@ CUDA_VISIBLE_DEVICES=0 CUDA_LAUNCH_BLOCKING=1 python src/train/train_colorpeel.p
   --modifier_token "<s1*>+<s2*>+<c1*>+<c2*>+<c3*>+<c4*>" \
   --initializer_token "cone+sphere+red+green+blue+yellow"
 
-# python src/test/test.py --exp exp
+python src/test/test.py --exp exp
