@@ -11,7 +11,7 @@ CUDA_VISIBLE_DEVICES=0,1 CUDA_LAUNCH_BLOCKING=1 python src/train/train_colorpeel
   --gradient_accumulation_steps=1 \
   --learning_rate=1e-5  \
   --lr_warmup_steps=0 \
-  --max_train_steps=0 \
+  --max_train_steps=1125 \
   --cos_weight=0.2 \
   --scale_lr --hflip  \
   --modifier_token $modifier_token \
